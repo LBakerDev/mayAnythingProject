@@ -77,8 +77,8 @@
         </div>
 
         <!-- Card showing vehicles in inventory -->
-        <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region===selected" id="vue-app" class="slds-card">
-            <transition name="fade">
+        <!-- <transition name="fade"> -->
+        <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected"  id="vue-app" class="slds-card">
                 <!-- Looping through each vehicle in inventory -->
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -102,8 +102,8 @@
                     <!-- Toggle for each rule -->
 
                 </div>
-            </transition>
         </article>
+        <!-- </transition> -->
 
         <div id="vue-app" class="formToggles">
 

@@ -3,7 +3,7 @@ new Vue({
     data: {
         checked: true,
         search: '',
-        selected: null,
+        selected: this.vehicles,
         vehicles: [
             {
                 name: "2012 Ford S-Max",
@@ -110,22 +110,14 @@ new Vue({
     methods: {
 
         refresh: function () {
-            return this.selected = '', this.search='';
-            
-        
-        }
-    },
-
-    ruleToggle: function(filteredVehicles) {
-        if(this.checked == true) {
-            return filteredVehicles;
-        }
-        if(this.checked == false){
-            return this.vehicles;
-        }
-    },
+            return this.selected = '', this.search = '';
+        },
+    
 
        
+},
+
+
     // creating search functionality with computed
     computed: {
         filteredVehicles: function () {
@@ -146,7 +138,15 @@ new Vue({
             return vehArray;
         },
 
-        
+        ruleToggle: function () {
+            var searchTxt = this.search;
+            if (!this.checked) {
+                this.search = '';
+    
+            }
+        },
+
+
 
         // selectedVehicles: function (vehicles) {
         //     return this.vehicles.Region.filter(function (region) {
@@ -156,7 +156,7 @@ new Vue({
         //             return this.selected;
         //         }
         //     });
-            
+
 
         // }
 

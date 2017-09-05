@@ -1,0 +1,89 @@
+h1 {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+
+
+#main_navigation {
+    display: flex;
+    padding: 2.5em 5%;
+    border-bottom: 1px solid #E9E9E9;
+    text-align: center;
+}
+
+.demo-only slds-size_1-of-2{
+    width: 5%;
+}
+
+.banner {
+    height: 130px;
+    background-color: #2196f3;
+}
+
+/* Styling for refresh button */
+#refresh {
+    color: white;
+    background-color: #ff5722;
+    margin: 0 auto;
+    width: 100px;
+    margin-left: 0px;
+    height: 50px;
+}
+
+/* modify app width and centering */
+body{
+    width: 960px;
+    margin: 0 auto; 
+}
+
+.container{
+    margin-top: 40px;
+}
+
+.slds-context-bar__icon-action {
+    padding: 0;
+}
+
+/* container for search inputs */
+#flexSearch{
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+/* styling for search bar */
+.search{
+    width: 25%;
+}
+
+
+.slds-form-element{
+    margin-bottom: 10px;
+    
+}
+
+/* Move rule toggle to right far right of element */
+.slds-size--1-of-2, .slds-size_1-of-2 {
+    width: 5%;
+}
+
+.formToggles{
+    display: flex;
+    margin-top: 40px;
+    
+}
+
+/* #ruleToggle{
+    margin-top: 40px;
+} */
+
+.fade-enter-active, .fade-leave-active {
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
