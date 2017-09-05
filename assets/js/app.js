@@ -110,8 +110,18 @@ new Vue({
     methods: {
 
         refresh: function () {
-            return this.search='';
+            return this.selected = '', this.search='';
+            
         
+        }
+    },
+
+    ruleToggle: function(filteredVehicles) {
+        if(this.checked == true) {
+            return filteredVehicles;
+        }
+        if(this.checked == false){
+            return this.vehicles;
         }
     },
 
@@ -136,14 +146,7 @@ new Vue({
             return vehArray;
         },
 
-        ruleToggle: function(filteredVehicles) {
-            if(this.checked === true) {
-                return filteredVehicles;
-            }
-            if(this.checked === false){
-                return this.vehicles;
-            }
-        }
+        
 
         // selectedVehicles: function (vehicles) {
         //     return this.vehicles.Region.filter(function (region) {
