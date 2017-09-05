@@ -63,7 +63,7 @@ new Vue({
                 Date: "6/12/16"
             },
             {
-                name: "vehicle 7",
+                name: "Ferrari Enzo",
                 status: "Inactive",
                 rule: "Vehicle Leaving Southeast",
                 Region: "Southeast",
