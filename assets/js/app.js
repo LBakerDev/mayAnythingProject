@@ -3,7 +3,7 @@ new Vue({
     data: {
         checked: true,
         search: '',
-        selected: '',
+        selected: null,
         vehicles: [
             {
                 name: "2012 Ford S-Max",
