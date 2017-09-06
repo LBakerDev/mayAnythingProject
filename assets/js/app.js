@@ -1,4 +1,5 @@
-// New vue instance
+// New vue instance. el is for Element
+// Data will be looped through by vue instance in HTML file
 new Vue({
     el: '#vue-app',
     data: {
