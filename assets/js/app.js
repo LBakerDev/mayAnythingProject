@@ -5,8 +5,8 @@ new Vue({
         search: '',
         previousSearch: '',
         selected: 'Show All',
-        
-        
+
+
         vehicles: [
             {
                 name: "2012 Ford S-Max",
@@ -123,13 +123,13 @@ new Vue({
             this.vehicles.$set(index, vehicle);
             console.log(this.filteredVehicles);
         },
-       
-},
+
+    },
 
 
     // Building an array of unique regions based on data
     computed: {
-        getRegions: function() {
+        getRegions: function () {
             var regionList = ['Show All'];
             for (var i = 0; i < this.vehicles.length; i++) {
                 console.log(regionList);
@@ -142,27 +142,27 @@ new Vue({
         },
         // Search function to filter vehicle data
         filteredVehicles: function () {
-                var vehArray = this.vehicles,
+            var vehArray = this.vehicles,
                 searchString = this.search;
 
-                if (!searchString) {
-                    return vehArray;
-                }
-
-                searchString = searchString.trim().toLowerCase();
-
-                vehArray = vehArray.filter(function (item) {
-                    if (item.rule.toLowerCase().indexOf(searchString) !== -1 || 
-                        (item.Region === this.selected)
-                ) {
-                        return item;
-                    }
-                })
+            if (!searchString) {
                 return vehArray;
-            
+            }
+
+            searchString = searchString.trim().toLowerCase();
+
+            vehArray = vehArray.filter(function (item) {
+                if (item.rule.toLowerCase().indexOf(searchString) !== -1 ||
+                    (item.Region === this.selected)
+                ) {
+                    return item;
+                }
+            })
+            return vehArray;
+
         },
     }
-    })
-        
+})
+
 
 

@@ -15,6 +15,7 @@
 
     <div id="container">
 
+        <!-- Animated icon in navBar -->
         <div class="slds-context-bar">
             <div class="slds-context-bar__primary slds-context-bar__item_divider-right">
                 <div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover slds-context-bar__item_divider-right">
@@ -39,25 +40,16 @@
                     </span>
                 </div>
             </div>
-            <!-- <nav class="slds-context-bar__secondary" role="navigation">
-                <ul class="slds-grid">
-                    <li class="slds-context-bar__item slds-context-bar__item_divider-right">
-
-                        <span class="slds-truncate" title="Home">Vehicle Locator</span>
-
-                    </li>
-            </nav> -->
         </div>
+
         <!-- Banner section -->
         <div class="banner">
-                <!-- <span id="bannerImg" class="slds-truncate"><img src="assets/images/ma.png"></span> -->
-                
-            <h1 class="slds-text-heading_large" >Fleet Status</h1>
-             <p class="slds-text-heading_medium">Toggle parameters and gain insight</p>
+            <h1 class="slds-text-heading_large">Fleet Status</h1>
+            <p class="slds-text-heading_medium">Toggle parameters and gain insight</p>
         </div>
 
         <!-- Container for Vue -->
-        <div id="vue-app" class="container">
+        <div id="vue-app" class="vue-container">
             <div id="flexSearch">
                 <!-- Drop down for region selection -->
                 <div class="slds-form-element search">
@@ -67,7 +59,7 @@
                             <select v-model="selected" class="slds-select" id="select-01">
                                   <option v-for="item in getRegions" :value="item">{{item}}</option>
                                   
-                                </select>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -83,33 +75,33 @@
             </div>
 
             <!-- Card showing vehicles in inventory -->
-            
-                <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected || selected === 'Show All'" id="vue-app" class="slds-card"
-                    v-bind:class="{ inactive: !vehicle.Active }">
-                    <!-- Looping through each vehicle in inventory -->
-                    <div class="slds-card__header slds-grid">
-                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                            <div class="slds-media__figure">
-                                <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
+
+            <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected || selected === 'Show All'" id="vue-app" class="slds-card"
+                v-bind:class="{ inactive: !vehicle.Active }">
+                <!-- Looping through each vehicle in inventory -->
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
                                 <svg class="slds-icon slds-icon_small" aria-hidden="true">
                                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
                                 </svg>
                               </span>
-                            </div>
-                            <div class="slds-media__body">
-                                <h1>
+                        </div>
+                        <div class="slds-media__body">
+                            <h1>
 
-                                    {{vehicle.name}}
-                                </h1>
-                                <p>{{vehicle.rule}} :: {{ vehicle.Region }}</p>
-                                <!-- <p class="status">{{ vehicle.status }}</p> -->
-                            </div>
-                        </header>
+                                {{vehicle.name}}
+                            </h1>
+                            <p>{{vehicle.rule}} :: {{ vehicle.Region }}</p>
 
-                        <!-- Toggle for each rule -->
-                        <div id="ruleToggle" class="demo-only slds-size_1-of-2">
-                            <div class="slds-form-element">
-                                <label class="slds-checkbox_toggle slds-grid">
+                        </div>
+                    </header>
+
+                    <!-- Toggle for each rule -->
+                    <div id="ruleToggle" class="demo-only slds-size_1-of-2">
+                        <div class="slds-form-element">
+                            <label class="slds-checkbox_toggle slds-grid">
                     
                                     <input v-on:click="ruleToggle(vehicle)" type="checkbox" v-model="vehicle.Active" name="checkbox" aria-describedby="toggle-desc" value="on">
                                     <span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
@@ -118,18 +110,16 @@
                                         <span class="slds-checkbox_off">Activate</span>
                                     </span>
                                 </label>
-                            </div>
                         </div>
-
                     </div>
-                </article>
-         
+
+                </div>
+            </article>
+
 
             <div id="vue-app" class="formToggles">
 
-                <button v-on:click="refresh" id="refresh" class="slds-button">Refresh</button>
-
-
+                <button v-on:click="refresh" id="refresh" class="slds-button ">Refresh</button>
             </div>
 
         </div>
