@@ -1,3 +1,4 @@
+// New vue instance
 new Vue({
     el: '#vue-app',
     data: {
@@ -109,15 +110,13 @@ new Vue({
         ]
     },
 
-    watch: {
-    },
 
     methods: {
-
+        // Refresh data button
         refresh: function () {
             return this.selected = 'Show All', this.search = '';
         },
-
+        // Toggle whether rule is active or inactive
         ruleToggle: function (index, vehicle) {
             console.log(vehicle);
             vehicle.Active = !vehicle.Active;
@@ -141,6 +140,7 @@ new Vue({
             }
             return regionList;
         },
+        // Search function to filter vehicle data
         filteredVehicles: function () {
                 var vehArray = this.vehicles,
                 searchString = this.search;
