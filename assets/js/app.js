@@ -1,13 +1,15 @@
 new Vue({
     el: '#vue-app',
     data: {
-        checked: true,
         search: '',
-        selected: this.vehicles,
+        previousSearch: '',
+        selected: 'Show All',
+        
+        
         vehicles: [
             {
                 name: "2012 Ford S-Max",
-                status: "Active",
+                Active: true,
                 rule: "Van Speeding",
                 Region: "All",
                 Created: "Michelle Jones",
@@ -16,7 +18,7 @@ new Vue({
             },
             {
                 name: "2015 Ford Model T-Van",
-                status: "Active",
+                Active: true,
                 rule: "Van Excessive Idle",
                 Region: "All",
                 Created: "Michelle Jones",
@@ -26,7 +28,7 @@ new Vue({
             },
             {
                 name: "2014 Ford Transit Connect",
-                status: "Active",
+                Active: true,
                 rule: "Dump Truck Speeding SE",
                 Region: "Southeast",
                 Created: "John James",
@@ -36,7 +38,7 @@ new Vue({
             },
             {
                 name: "2012 Buick Terraza",
-                status: "Inactive",
+                Active: false,
                 rule: "Dump Truck Quick Acceleration",
                 Region: "All",
                 Created: "Roger Martin",
@@ -46,7 +48,7 @@ new Vue({
             },
             {
                 name: "2009 960E-2*2",
-                status: "Active",
+                Active: true,
                 rule: "Dump Truck Speeding NE",
                 Region: "All",
                 Created: "John James",
@@ -56,7 +58,7 @@ new Vue({
             },
             {
                 name: "2011 960E-1k *2",
-                status: "Active",
+                Active: true,
                 rule: "Dump Truck Sudden Stop",
                 Region: "All",
                 Created: "Michelle Jones",
@@ -64,7 +66,7 @@ new Vue({
             },
             {
                 name: "Ferrari Enzo",
-                status: "Inactive",
+                Active: false,
                 rule: "Vehicle Leaving Southeast",
                 Region: "Southeast",
                 Created: "Roger Martin",
@@ -74,7 +76,7 @@ new Vue({
             },
             {
                 name: "2015 Ford F-150",
-                status: "Inactive",
+                Active: false,
                 rule: "Vehicle Leaving Northeast",
                 Region: "Northeast",
                 Created: "Roger Martin",
@@ -84,7 +86,7 @@ new Vue({
             },
             {
                 name: "2016 Ford F-250",
-                status: "Inactive",
+                Active: false,
                 rule: "Vehicle Leaving Southeast",
                 Region: "Midwest",
                 Created: "Roger Martin",
@@ -96,7 +98,7 @@ new Vue({
 
             {
                 name: "2011 930E-4SE *2",
-                status: "Active",
+                Active: true,
                 rule: "Dump Truck Engine off",
                 Region: "All",
                 Created: "John James",
@@ -107,59 +109,60 @@ new Vue({
         ]
     },
 
+    watch: {
+    },
+
     methods: {
 
         refresh: function () {
-            return this.selected = '', this.search = '';
+            return this.selected = 'Show All', this.search = '';
         },
-    
 
+        ruleToggle: function (index, vehicle) {
+            console.log(vehicle);
+            vehicle.Active = !vehicle.Active;
+            this.vehicles.$set(index, vehicle);
+            console.log(this.filteredVehicles);
+        },
        
 },
 
 
-    // creating search functionality with computed
+    // Building an array of unique regions based on data
     computed: {
+        getRegions: function() {
+            var regionList = ['Show All'];
+            for (var i = 0; i < this.vehicles.length; i++) {
+                console.log(regionList);
+                console.log(regionList.indexOf(this.vehicles[i].Region))
+                if (regionList.indexOf(this.vehicles[i].Region) === -1) {
+                    regionList.push(this.vehicles[i].Region);
+                }
+            }
+            return regionList;
+        },
         filteredVehicles: function () {
-            var vehArray = this.vehicles,
+                var vehArray = this.vehicles,
                 searchString = this.search;
 
-            if (!searchString) {
-                return vehArray;
-            }
-
-            searchString = searchString.trim().toLowerCase();
-
-            vehArray = vehArray.filter(function (item) {
-                if (item.rule.toLowerCase().indexOf(searchString) !== -1) {
-                    return item;
+                if (!searchString) {
+                    return vehArray;
                 }
-            })
-            return vehArray;
+
+                searchString = searchString.trim().toLowerCase();
+
+                vehArray = vehArray.filter(function (item) {
+                    if (item.rule.toLowerCase().indexOf(searchString) !== -1 || 
+                        (item.Region === this.selected)
+                ) {
+                        return item;
+                    }
+                })
+                return vehArray;
+            
         },
-
-        ruleToggle: function () {
-            var searchTxt = this.search;
-            if (!this.checked) {
-                this.search = '';
-    
-            }
-        },
-
-
-
-        // selectedVehicles: function (vehicles) {
-        //     return this.vehicles.Region.filter(function (region) {
-        //         var dataRegion = this.vehicles.Region;
-
-        //         if(this.selected === dataRegion ) {
-        //             return this.selected;
-        //         }
-        //     });
-
-
-        // }
-
     }
-})
+    })
+        
+
 

@@ -40,6 +40,7 @@ body{
 .container{
     margin-top: 40px;
 }
+.inactive{color: grey;}
 
 .slds-context-bar__icon-action {
     padding: 0;

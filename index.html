@@ -51,15 +51,14 @@
 
     <!-- Container for Vue -->
     <div id="vue-app" class="container">
-
         <div id="flexSearch">
             <!-- Drop down for region selection -->
             <div class="slds-form-element search">
                 <label class="slds-form-element__label" for="select-01">Vehicle Region</label>
                 <div class="slds-form-element__control">
                     <div class="slds-select_container">
-                        <select v-model="selected" class="slds-select" id="select-01">
-                                  <option v-for="item in vehicles" :value="item.Region">{{item.Region}}</option>
+                        <select v-model="selected"  class="slds-select" id="select-01">
+                                  <option v-for="item in getRegions" :value="item">{{item}}</option>
                                   
                                 </select>
                     </div>
@@ -78,7 +77,8 @@
 
         <!-- Card showing vehicles in inventory -->
         <!-- <transition name="fade"> -->
-        <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected"  id="vue-app" class="slds-card">
+        <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected || selected === 'Show All'"
+        id="vue-app" class="slds-card" v-bind:class="{ inactive: !vehicle.Active }">
                 <!-- Looping through each vehicle in inventory -->
                 <div class="slds-card__header slds-grid">
                     <header class="slds-media slds-media_center slds-has-flexi-truncate">
@@ -100,6 +100,19 @@
                     </header>
 
                     <!-- Toggle for each rule -->
+                    <div id="ruleToggle" class="demo-only slds-size_1-of-2">
+                            <div class="slds-form-element">
+                                <label class="slds-checkbox_toggle slds-grid">
+                    
+                                    <input v-on:click="ruleToggle(vehicle)" type="checkbox" v-model="vehicle.Active" name="checkbox" aria-describedby="toggle-desc" value="on">
+                                    <span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-checkbox_on">Deactivate</span>
+                                        <span class="slds-checkbox_off">Activate</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
 
                 </div>
         </article>
@@ -109,19 +122,7 @@
 
             <button v-on:click="refresh" id="refresh" class="slds-button">Refresh</button>
 
-            <div id="ruleToggle" class="demo-only slds-size_1-of-2">
-                <div class="slds-form-element">
-                    <label class="slds-checkbox_toggle slds-grid">
-        
-                                <input v-on:click="ruleToggle" type="checkbox" v-model="checked" name="checkbox" aria-describedby="toggle-desc" value="on">
-                                <span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
-                                  <span class="slds-checkbox_faux"></span>
-                                  <span class="slds-checkbox_on">Rule Enabled</span>
-                                  <span class="slds-checkbox_off">Rule Disabled</span>
-                                </span>
-                              </label>
-                </div>
-            </div>
+            
         </div>
 
     </div>
