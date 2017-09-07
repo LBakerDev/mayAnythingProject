@@ -8,6 +8,7 @@
     <link href="assets/css/salesforce-lightning-design-system-2.3.2/assets/styles/salesforce-lightning-design-system.min.css"
         rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="vue-animate.min.css">
     <script src="https:/unpkg.com/vue"></script>
 </head>
 
@@ -50,14 +51,8 @@
 
         <!-- Container for Vue -->
         <div id="vue-app" class="vue-container">
-            <div v-model="loading" v-if="this.loading===true" class="demo-only" style="height: 6rem;">
-                <div role="status" class="slds-spinner slds-spinner_large">
-                    <span class="slds-assistive-text">Loading</span>
-                    <div class="slds-spinner__dot-a"></div>
-                    <div class="slds-spinner__dot-b"></div>
-                </div>
-            </div>
 
+            <!-- Grouping for toggle and search -->
             <div id="flexSearch">
                 <!-- Drop down for region selection -->
                 <div class="slds-form-element search">
@@ -122,6 +117,13 @@
             </article>
             <div id="vue-app" class="formToggles">
                 <button v-on:click="refresh" id="refresh" class="slds-button ">Refresh</button>
+            </div>
+            <div v-model="loading" v-if="this.loading===true" class="demo-only" style="height: 6rem;">
+                <div role="status" class="slds-spinner slds-spinner_large">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
             </div>
         </div>
     </div>
