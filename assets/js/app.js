@@ -94,11 +94,11 @@ new Vue({
     methods: {
         // Refresh data button with SetTimeout for spinner
         refresh: function () {
-            setTimeout(function() {
-            this.loading = false;
-                
-            return this.selected = 'Show All', this.search = '';
-            }.bind(this),3000)
+            setTimeout(function () {
+                this.loading = false;
+
+                return this.selected = 'Show All', this.search = '';
+            }.bind(this), 3000)
             this.loading = true;
 
         },
