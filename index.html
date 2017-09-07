@@ -50,6 +50,14 @@
 
         <!-- Container for Vue -->
         <div id="vue-app" class="vue-container">
+            <div v-model="loading" v-if="this.loading===true" class="demo-only" style="height: 6rem;">
+                <div role="status" class="slds-spinner slds-spinner_large">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+
             <div id="flexSearch">
                 <!-- Drop down for region selection -->
                 <div class="slds-form-element search">
@@ -72,6 +80,8 @@
                     </div>
                 </div>
             </div>
+
+
 
             <!-- Card showing vehicles in inventory -->
             <!-- Section loops through vehicles array in data object if region or Show All is selected from drop down -->

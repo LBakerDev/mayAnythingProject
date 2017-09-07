@@ -3,6 +3,7 @@
 new Vue({
     el: '#vue-app',
     data: {
+        loading: false,
         search: '',
         previousSearch: '',
         selected: 'Show All',
@@ -91,17 +92,21 @@ new Vue({
     },
 
     methods: {
-        // Refresh data button
+        // Refresh data button with SetTimeout for spinner
         refresh: function () {
+            setTimeout(function() {
+            this.loading = false;
+                
             return this.selected = 'Show All', this.search = '';
+            }.bind(this),3000)
+            this.loading = true;
+
         },
         // Toggle whether rule is active or inactive
         ruleToggle: function (index, vehicle) {
             vehicle.Active = !vehicle.Active;
             this.vehicles.$set(index, vehicle);
-            console.log(this.filteredVehicles);
         },
-
     },
 
     // Building an array of unique regions based on data
