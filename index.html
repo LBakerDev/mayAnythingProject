@@ -45,7 +45,7 @@
         <!-- Banner section -->
         <div class="banner">
             <h1 class="slds-text-heading_large">Fleet Status</h1>
-            <p class="slds-text-heading_medium">Toggle parameters and gain insight</p>
+            <p class="slds-text-heading_medium">Toggle Parameters and Gain Insight</p>
         </div>
 
         <!-- Container for Vue -->
@@ -69,12 +69,12 @@
                     <label class="slds-form-element__label" for="text-input-id-1">Vehicle Rules</label>
                     <div class="slds-form-element__control">
                         <input type="text" v-model="search" id="text-input-id-1" class="slds-input" placeholder="Excessive speeding">
-
                     </div>
                 </div>
             </div>
 
             <!-- Card showing vehicles in inventory -->
+            <!-- Section loops through vehicles array in data object if region or Show All is selected from drop down -->
 
             <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected || selected === 'Show All'" id="vue-app" class="slds-card"
                 v-bind:class="{ inactive: !vehicle.Active }">
@@ -89,12 +89,8 @@
                               </span>
                         </div>
                         <div class="slds-media__body">
-                            <h1>
-
-                                {{vehicle.name}}
-                            </h1>
+                            <h1>{{vehicle.name}}</h1>
                             <p>{{vehicle.rule}} :: {{ vehicle.Region }}</p>
-
                         </div>
                     </header>
 
@@ -112,16 +108,11 @@
                                 </label>
                         </div>
                     </div>
-
                 </div>
             </article>
-
-
             <div id="vue-app" class="formToggles">
-
                 <button v-on:click="refresh" id="refresh" class="slds-button ">Refresh</button>
             </div>
-
         </div>
     </div>
 

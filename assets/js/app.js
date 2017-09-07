@@ -7,16 +7,13 @@ new Vue({
         previousSearch: '',
         selected: 'Show All',
 
-
-        vehicles: [
-            {
+        vehicles: [{
                 name: "2012 Ford S-Max",
                 Active: true,
                 rule: "Van Speeding",
                 Region: "All",
                 Created: "Michelle Jones",
                 Date: "6/12/16",
-
             },
             {
                 name: "2015 Ford Model T-Van",
@@ -25,8 +22,6 @@ new Vue({
                 Region: "All",
                 Created: "Michelle Jones",
                 Date: "6/12/16"
-
-
             },
             {
                 name: "2014 Ford Transit Connect",
@@ -35,8 +30,6 @@ new Vue({
                 Region: "Southeast",
                 Created: "John James",
                 Date: "2/24/16"
-
-
             },
             {
                 name: "2012 Buick Terraza",
@@ -45,8 +38,6 @@ new Vue({
                 Region: "All",
                 Created: "Roger Martin",
                 Date: "2/25/16"
-
-
             },
             {
                 name: "2009 960E-2*2",
@@ -55,8 +46,6 @@ new Vue({
                 Region: "All",
                 Created: "John James",
                 Date: "2/24/16"
-
-
             },
             {
                 name: "2011 960E-1k *2",
@@ -73,8 +62,6 @@ new Vue({
                 Region: "Southeast",
                 Created: "Roger Martin",
                 Date: "8/17/16"
-
-
             },
             {
                 name: "2015 Ford F-150",
@@ -83,8 +70,6 @@ new Vue({
                 Region: "Northeast",
                 Created: "Roger Martin",
                 Date: "8/17/16"
-
-
             },
             {
                 name: "2016 Ford F-250",
@@ -93,11 +78,7 @@ new Vue({
                 Region: "Midwest",
                 Created: "Roger Martin",
                 Date: "8/17/16"
-
-
             },
-
-
             {
                 name: "2011 930E-4SE *2",
                 Active: true,
@@ -105,12 +86,9 @@ new Vue({
                 Region: "All",
                 Created: "John James",
                 Date: "8/12/16"
-
-
             }
         ]
     },
-
 
     methods: {
         // Refresh data button
@@ -119,7 +97,6 @@ new Vue({
         },
         // Toggle whether rule is active or inactive
         ruleToggle: function (index, vehicle) {
-            console.log(vehicle);
             vehicle.Active = !vehicle.Active;
             this.vehicles.$set(index, vehicle);
             console.log(this.filteredVehicles);
@@ -127,20 +104,18 @@ new Vue({
 
     },
 
-
     // Building an array of unique regions based on data
     computed: {
         getRegions: function () {
             var regionList = ['Show All'];
             for (var i = 0; i < this.vehicles.length; i++) {
-                console.log(regionList);
-                console.log(regionList.indexOf(this.vehicles[i].Region))
                 if (regionList.indexOf(this.vehicles[i].Region) === -1) {
                     regionList.push(this.vehicles[i].Region);
                 }
             }
             return regionList;
         },
+
         // Search function to filter vehicle data
         filteredVehicles: function () {
             var vehArray = this.vehicles,
@@ -149,7 +124,6 @@ new Vue({
             if (!searchString) {
                 return vehArray;
             }
-
             searchString = searchString.trim().toLowerCase();
 
             vehArray = vehArray.filter(function (item) {
@@ -163,7 +137,4 @@ new Vue({
 
         },
     }
-})
-
-
-
+});
