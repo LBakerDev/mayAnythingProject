@@ -107,6 +107,7 @@ new Vue({
             vehicle.Active = !vehicle.Active;
             this.vehicles.$set(index, vehicle);
         },
+
     },
 
     // Building an array of unique regions based on data

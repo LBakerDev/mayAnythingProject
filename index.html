@@ -80,30 +80,30 @@
 
             <!-- Card showing vehicles in inventory -->
             <!-- Section loops through vehicles array in data object if region or Show All is selected from drop down -->
-        
+
             <article v-for="vehicle in filteredVehicles" v-if="vehicle.Region==selected || selected === 'Show All'" id="vue-app" class="slds-card"
                 v-bind:class="{ inactive: !vehicle.Active }">
                 <!-- Looping through each vehicle in inventory -->
                 <transition appear>
-                <div class="slds-card__header slds-grid">
-                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
-                        <div class="slds-media__figure">
-                            <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-contact" title="description of icon when needed">
                                 <svg class="slds-icon slds-icon_small" aria-hidden="true">
                                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
                                 </svg>
                               </span>
-                        </div>
-                        <div class="slds-media__body">
-                            <h1>{{vehicle.name}}</h1>
-                            <p>{{vehicle.rule}} :: {{ vehicle.Region }}</p>
-                        </div>
-                    </header>
+                            </div>
+                            <div class="slds-media__body">
+                                <h1>{{vehicle.name}}</h1>
+                                <p>{{vehicle.rule}} :: {{ vehicle.Region }}</p>
+                            </div>
+                        </header>
 
-                    <!-- Toggle for each rule -->
-                    <div id="ruleToggle" class="demo-only slds-size_1-of-2">
-                        <div class="slds-form-element">
-                            <label class="slds-checkbox_toggle slds-grid">
+                        <!-- Toggle for each rule -->
+                        <div id="ruleToggle" class="demo-only slds-size_1-of-2">
+                            <div class="slds-form-element">
+                                <label class="slds-checkbox_toggle slds-grid">
                     
                                     <input v-on:click="ruleToggle(vehicle)" type="checkbox" v-model="vehicle.Active" name="checkbox" aria-describedby="toggle-desc" value="on">
                                     <span id="toggle-desc" class="slds-checkbox_faux_container" aria-live="assertive">
@@ -112,12 +112,12 @@
                                         <span class="slds-checkbox_off">Activate</span>
                                     </span>
                                 </label>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </transition>
             </article>
-            
+
             <div id="vue-app" class="formToggles">
                 <button v-on:click="refresh" id="refresh" class="slds-button ">Refresh</button>
             </div>
